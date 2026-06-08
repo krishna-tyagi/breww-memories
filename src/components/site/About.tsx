@@ -83,6 +83,7 @@ export function About() {
                 Welcome to Brew Memories — where travel, events, and human connections come together
                 beautifully.
               </p>
+              <p className="text-espresso italic">-Akshita Tyagi, Founder</p>
             </div>
           </Reveal>
 
