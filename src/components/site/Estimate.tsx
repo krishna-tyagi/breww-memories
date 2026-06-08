@@ -10,43 +10,49 @@ export function Estimate() {
   const [err, setErr] = useState<string | null>(null);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setErr(null);
+  e.preventDefault();
+  setLoading(true);
+  setErr(null);
 
-    const form = e.currentTarget;
+  const form = e.currentTarget;
 
-    try {
-      const formData = new FormData(form);
+  try {
+    const formData = new FormData(form);
 
-      formData.append("access_key", WEB3FORMS_KEY);
-      formData.append("subject", "New Breww Memories Inquiry");
-      formData.append("from_name", "Breww Memories Website");
+    formData.append("subject", "New Breww Memories Inquiry");
+    formData.append("from_name", "Breww Memories Website");
 
-      const response = await fetch(
-        "https://api.web3forms.com/submit",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const result = await response.json();
-
-      if (!result.success) {
-        throw new Error("Submission failed");
+    const response = await fetch(
+      "https://api.web3forms.com/submit",
+      {
+        method: "POST",
+        body: formData,
       }
+    );
 
-      setSent(true);
-      form.reset();
-    } catch {
-      setErr(
-        "Something went wrong. Please WhatsApp us at 87967-02220."
+    const result = await response.json();
+
+    console.log("Web3Forms Response:", result);
+
+    if (!result.success) {
+      throw new Error(
+        result.message || JSON.stringify(result)
       );
-    } finally {
-      setLoading(false);
     }
-  };
+
+    setSent(true);
+    form.reset();
+  } catch (error: any) {
+    console.error("Web3Forms Error:", error);
+
+    setErr(
+      error?.message ||
+        "Something went wrong. Please WhatsApp us at 87967-02220."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   const field =
     "w-full rounded-xl border border-border bg-cream/60 px-4 py-3 text-sm text-charcoal placeholder:text-muted-foreground focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 transition-all";
