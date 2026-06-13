@@ -1,5 +1,5 @@
 import { Instagram, Linkedin } from "lucide-react";
-import logo from "@/assets/logo-mark.png";
+import logo from "@/assets/logo-mark.webp";
 
 
 const links = [
