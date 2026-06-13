@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo-mark.png";
+import logo from "@/assets/logo-mark.webp";
 
 const links = [
   { href: "#home", label: "Home" },
