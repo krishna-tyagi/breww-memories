@@ -7,7 +7,7 @@ export function About() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         <Reveal>
           <div className="relative">
-            <div className="absolute -inset-6 bg-gradient-gold opacity-20 blur-3xl rounded-full" />
+            <div className="absolute -inset-6 about-image-glow rounded-full" />
             <div className="relative overflow-hidden rounded-2xl shadow-deep">
               <img
                 src={aboutImg}
@@ -20,16 +20,21 @@ export function About() {
             </div>
             <div className="absolute -bottom-6 -right-6 hidden md:block rounded-2xl bg-cream shadow-soft border border-border p-5 max-w-[220px]">
               <p className="font-display text-2xl text-espresso">Since day one</p>
-              <p className="text-xs text-muted-foreground mt-1">Built around personal detail, not packages.</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Built around personal detail, not packages.
+              </p>
             </div>
           </div>
         </Reveal>
 
         <div className="space-y-7">
-          <Reveal><Eyebrow>Our Story</Eyebrow></Reveal>
+          <Reveal>
+            <Eyebrow>Our Story</Eyebrow>
+          </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-espresso leading-[1.05] text-balance">
-              Every experience<br />
+              Every experience
+              <br />
               <span className="italic text-gold">deserves to be brewed with care.</span>
             </h2>
           </Reveal>
@@ -49,8 +54,8 @@ export function About() {
               <p>
                 While observing the travel and event industry, I realized that most experiences are
                 designed around fixed plans and standard packages.{" "}
-                <span className="font-medium text-espresso">But people are not standard.</span>{" "}
-                Some travelers crave adventure, others want slow mornings and quiet escapes. Some
+                <span className="font-medium text-espresso">But people are not standard.</span> Some
+                travelers crave adventure, others want slow mornings and quiet escapes. Some
                 companies want retreats that reconnect their teams, others want events that feel
                 engaging and meaningful — not just formal gatherings.
               </p>
@@ -64,10 +69,10 @@ export function About() {
                 every team, and every occasion is different.
               </p>
               <p>
-                At Brew Memories, we focus on understanding what our clients truly want — exploration
-                or relaxation, celebration or connection, adventure or comfort, energy or peace.
-                Instead of offering fixed itineraries or traditional event setups, we craft
-                experiences that feel personal, warm, and thoughtfully made.
+                At Brew Memories, we focus on understanding what our clients truly want —
+                exploration or relaxation, celebration or connection, adventure or comfort, energy
+                or peace. Instead of offering fixed itineraries or traditional event setups, we
+                craft experiences that feel personal, warm, and thoughtfully made.
               </p>
               <p>
                 For us, it's not just about organizing trips or managing events. It's about creating
@@ -96,7 +101,9 @@ export function About() {
               ].map((s) => (
                 <div key={s.v}>
                   <p className="font-display text-3xl text-espresso">{s.k}</p>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{s.v}</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">
+                    {s.v}
+                  </p>
                 </div>
               ))}
             </div>

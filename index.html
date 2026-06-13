@@ -48,9 +48,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500&family=Pinyon+Script&family=Bebas+Neue&family=Caveat:wght@600&family=DM+Serif+Display:ital@1&family=Space+Grotesk:wght@500&display=swap"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500&family=Pinyon+Script&family=Bebas+Neue&family=Caveat:wght@600&family=DM+Serif+Display:ital@1&family=Space+Grotesk:wght@500&display=swap"
+      />
+    </noscript>
 
     <script type="application/ld+json">
       {
@@ -71,9 +82,7 @@
           "email": "brewwmemories22@gmail.com",
           "contactType": "Customer Service"
         },
-        "sameAs": [
-          "https://www.instagram.com/brewwmemories"
-        ]
+        "sameAs": ["https://www.instagram.com/brewwmemories"]
       }
     </script>
   </head>

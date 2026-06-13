@@ -10,49 +10,45 @@ export function Estimate() {
   const [err, setErr] = useState<string | null>(null);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setLoading(true);
-  setErr(null);
+    e.preventDefault();
+    setLoading(true);
+    setErr(null);
 
-  const form = e.currentTarget;
+    const form = e.currentTarget;
 
-  try {
-    const formData = new FormData(form);
+    try {
+      const formData = new FormData(form);
 
-    formData.append("subject", "New Breww Memories Inquiry");
-    formData.append("from_name", "Breww Memories Website");
+      formData.append("subject", "New Breww Memories Inquiry");
+      formData.append("from_name", "Breww Memories Website");
 
-    const response = await fetch(
-      "https://api.web3forms.com/submit",
-      {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
+      });
+
+      const result = await response.json();
+
+      console.log("Web3Forms Response:", result);
+
+      if (!result.success) {
+        throw new Error(result.message || JSON.stringify(result));
       }
-    );
 
-    const result = await response.json();
+      setSent(true);
+      form.reset();
+    } catch (error: unknown) {
+      console.error("Web3Forms Error:", error);
 
-    console.log("Web3Forms Response:", result);
-
-    if (!result.success) {
-      throw new Error(
-        result.message || JSON.stringify(result)
+      setErr(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please WhatsApp us at 87967-02220.",
       );
+    } finally {
+      setLoading(false);
     }
-
-    setSent(true);
-    form.reset();
-  } catch (error: any) {
-    console.error("Web3Forms Error:", error);
-
-    setErr(
-      error?.message ||
-        "Something went wrong. Please WhatsApp us at 87967-02220."
-    );
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   const field =
     "w-full rounded-xl border border-border bg-cream/60 px-4 py-3 text-sm text-charcoal placeholder:text-muted-foreground focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/30 transition-all";
@@ -70,15 +66,14 @@ export function Estimate() {
 
           <Reveal delay={0.1}>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-espresso leading-[1.05] text-balance">
-              Tell us about your{" "}
-              <span className="italic text-gold">brief.</span>
+              Tell us about your <span className="italic text-gold">brief.</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.2}>
             <p className="text-lg text-charcoal/70 leading-relaxed">
-              Share a few details and our team will design a custom proposal
-              for your team — usually within 48 hours.
+              Share a few details and our team will design a custom proposal for your team — usually
+              within 48 hours.
             </p>
           </Reveal>
 
@@ -98,13 +93,9 @@ export function Estimate() {
           <Reveal delay={0.2}>
             <form
               onSubmit={onSubmit}
-              className="rounded-3xl border border-border bg-card/80 backdrop-blur-xl p-7 lg:p-10 shadow-soft"
+              className="rounded-3xl border border-border bg-card/95 p-7 lg:p-10 shadow-soft"
             >
-              <input
-                type="hidden"
-                name="access_key"
-                value={WEB3FORMS_KEY}
-              />
+              <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
 
               {sent ? (
                 <div className="py-16 text-center space-y-4">
@@ -112,9 +103,7 @@ export function Estimate() {
                     <Check size={24} />
                   </div>
 
-                  <h3 className="font-display text-3xl text-espresso">
-                    Thank you.
-                  </h3>
+                  <h3 className="font-display text-3xl text-espresso">Thank you.</h3>
 
                   <p className="text-charcoal/70 max-w-md mx-auto">
                     You'll receive a customised estimate from our team very soon.
@@ -122,19 +111,9 @@ export function Estimate() {
                 </div>
               ) : (
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <input
-                    required
-                    name="name"
-                    placeholder="Your name"
-                    className={field}
-                  />
+                  <input required name="name" placeholder="Your name" className={field} />
 
-                  <input
-                    required
-                    name="company"
-                    placeholder="Company"
-                    className={field}
-                  />
+                  <input required name="company" placeholder="Company" className={field} />
 
                   <input
                     required
@@ -144,19 +123,9 @@ export function Estimate() {
                     className={field}
                   />
 
-                  <input
-                    required
-                    name="phone"
-                    placeholder="Phone"
-                    className={field}
-                  />
+                  <input required name="phone" placeholder="Phone" className={field} />
 
-                  <select
-                    required
-                    name="event_type"
-                    className={field}
-                    defaultValue=""
-                  >
+                  <select required name="event_type" className={field} defaultValue="">
                     <option value="" disabled>
                       Event type
                     </option>
@@ -177,45 +146,21 @@ export function Estimate() {
                     className={field}
                   />
 
-                  <input
-                    name="location"
-                    placeholder="Preferred location"
-                    className={field}
-                  />
+                  <input name="location" placeholder="Preferred location" className={field} />
 
-                  <input
-                    name="budget"
-                    placeholder="Budget (₹)"
-                    className={field}
-                  />
+                  <input name="budget" placeholder="Budget (₹)" className={field} />
 
-                  <input
-                    name="duration"
-                    placeholder="Duration (e.g. 3 days)"
-                    className={field}
-                  />
+                  <input name="duration" placeholder="Duration (e.g. 3 days)" className={field} />
 
-                  <input
-                    name="date"
-                    type="date"
-                    className={field}
-                  />
+                  <input name="date" type="date" className={field} />
 
                   <div className="sm:col-span-2 grid sm:grid-cols-3 gap-3 pt-1">
-                    {[
-                      "Need travel?",
-                      "Need accommodation?",
-                      "Need activities?",
-                    ].map((q) => (
+                    {["Need travel?", "Need accommodation?", "Need activities?"].map((q) => (
                       <label
                         key={q}
                         className="flex items-center gap-2 rounded-xl border border-border bg-cream/60 px-4 py-3 text-sm cursor-pointer hover:border-gold transition-colors"
                       >
-                        <input
-                          type="checkbox"
-                          name={q}
-                          className="accent-espresso"
-                        />
+                        <input type="checkbox" name={q} className="accent-espresso" />
                         <span>{q}</span>
                       </label>
                     ))}
@@ -228,11 +173,7 @@ export function Estimate() {
                     className={`${field} sm:col-span-2 resize-none`}
                   />
 
-                  {err && (
-                    <p className="sm:col-span-2 text-sm text-destructive">
-                      {err}
-                    </p>
-                  )}
+                  {err && <p className="sm:col-span-2 text-sm text-destructive">{err}</p>}
 
                   <button
                     type="submit"

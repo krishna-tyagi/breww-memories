@@ -21,7 +21,9 @@ export function Testimonials() {
     <section id="testimonials" className="relative py-28 lg:py-40 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-3xl mb-16 space-y-6">
-          <Reveal><Eyebrow>In their words</Eyebrow></Reveal>
+          <Reveal>
+            <Eyebrow>In their words</Eyebrow>
+          </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-espresso leading-[1.05] text-balance">
               Quiet praise from <span className="italic text-gold">the people we've hosted.</span>
@@ -32,7 +34,7 @@ export function Testimonials() {
         <div className="grid md:grid-cols-3 gap-6">
           {quotes.map((t, i) => (
             <Reveal key={i} delay={i * 0.08}>
-              <figure className="h-full rounded-2xl border border-border bg-card/60 backdrop-blur-md p-8 lg:p-9 shadow-soft hover:shadow-glow hover:-translate-y-1 transition-all duration-500 ease-luxe">
+              <figure className="h-full rounded-2xl border border-border bg-card/90 p-8 lg:p-9 shadow-soft hover:shadow-glow hover:-translate-y-1 transition-all duration-500 ease-luxe">
                 <Quote size={28} className="text-gold" strokeWidth={1.4} />
                 <blockquote className="mt-5 text-charcoal/85 leading-relaxed font-display text-xl">
                   "{t.q}"

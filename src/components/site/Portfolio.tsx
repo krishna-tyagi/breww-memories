@@ -2,12 +2,26 @@ import { Eyebrow, Reveal } from "./Section";
 import p1 from "@/assets/portfolio-1.jpg";
 import p2 from "@/assets/portfolio-2.jpg";
 import p3 from "@/assets/portfolio-3.jpg";
-import { motion } from "framer-motion";
 
 const items = [
-  { img: p1, kicker: "Hill-station retreat", title: "A founders' offsite in the Himalayas", tag: "Retreat · 40 pax" },
-  { img: p2, kicker: "Annual conference", title: "A boutique-hotel conference in Delhi", tag: "Conference · 220 pax" },
-  { img: p3, kicker: "Destination celebration", title: "A coastal getaway for a milestone celebration", tag: "Getaway · 80 pax" },
+  {
+    img: p1,
+    kicker: "Hill-station retreat",
+    title: "A founders' offsite in the Himalayas",
+    tag: "Retreat · 40 pax",
+  },
+  {
+    img: p2,
+    kicker: "Annual conference",
+    title: "A boutique-hotel conference in Delhi",
+    tag: "Conference · 220 pax",
+  },
+  {
+    img: p3,
+    kicker: "Destination celebration",
+    title: "A coastal getaway for a milestone celebration",
+    tag: "Getaway · 80 pax",
+  },
 ];
 
 export function Portfolio() {
@@ -16,7 +30,9 @@ export function Portfolio() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
           <div className="max-w-2xl space-y-6">
-            <Reveal><Eyebrow>Selected work</Eyebrow></Reveal>
+            <Reveal>
+              <Eyebrow>Selected work</Eyebrow>
+            </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-espresso leading-[1.05] text-balance">
                 Moments we've <span className="italic text-gold">brewed.</span>
@@ -27,13 +43,9 @@ export function Portfolio() {
 
         <div className="space-y-8 lg:space-y-12">
           {items.map((it, i) => (
-            <motion.a
+            <a
               key={it.title}
               href="#contact"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.05 }}
-              transition={{ duration: 0.9, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               className={`group relative grid lg:grid-cols-12 gap-6 lg:gap-10 items-center ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}
             >
               <div className="lg:col-span-8 relative overflow-hidden rounded-2xl shadow-deep">
@@ -54,7 +66,7 @@ export function Portfolio() {
                 </h3>
                 <p className="text-sm text-muted-foreground">{it.tag}</p>
               </div>
-            </motion.a>
+            </a>
           ))}
         </div>
       </div>

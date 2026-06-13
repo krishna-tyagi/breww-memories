@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo-mark.webp";
 
@@ -25,18 +24,12 @@ export function Navbar() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-luxe ${
-        scrolled
-          ? "backdrop-blur-xl bg-cream/70 border-b border-border/60 shadow-soft"
-          : "bg-transparent"
+        scrolled ? "bg-cream/95 border-b border-border/60 shadow-soft" : "bg-transparent"
       }`}
     >
       <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-40 flex items-center justify-between">
-
         <a href="#home" className="flex items-center gap-3 group" aria-label="Breww Memories">
           <img
             src={logo}
@@ -46,7 +39,6 @@ export function Navbar() {
             className="h-42 lg:h-46 w-auto object-contain drop-shadow-sm transition-transform duration-500 ease-luxe group-hover:scale-[1.03]"
           />
         </a>
-
 
         <ul className="hidden lg:flex items-center gap-9">
           {links.map((l) => (
@@ -79,11 +71,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden backdrop-blur-xl bg-cream/95 border-t border-border"
-        >
+        <div className="lg:hidden bg-cream/95 border-t border-border">
           <ul className="px-6 py-6 space-y-4">
             {links.map((l) => (
               <li key={l.href}>
@@ -106,8 +94,8 @@ export function Navbar() {
               </a>
             </li>
           </ul>
-        </motion.div>
+        </div>
       )}
-    </motion.header>
+    </header>
   );
 }
