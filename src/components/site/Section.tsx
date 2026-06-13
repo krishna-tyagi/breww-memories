@@ -3,9 +3,7 @@ import { type ReactNode } from "react";
 export function Reveal({
   children,
 }: {
-  children: ReactNode;
-  delay?: number;
-  y?: number;
+  children: React.ReactNode;
 }) {
   return <>{children}</>;
 }
