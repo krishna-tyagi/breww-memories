@@ -71,7 +71,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="lg:hidden bg-cream/95 border-t border-border">
+        <div className="mobile-menu lg:hidden bg-cream/95 border-t border-border">
           <ul className="px-6 py-6 space-y-4">
             {links.map((l) => (
               <li key={l.href}>
